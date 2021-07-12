@@ -9,7 +9,12 @@ default-run = "app"
 edition = "2018"
 build = "src/build.rs"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+incremental = false
+opt-level = "s"
 
 [build-dependencies]
 tauri-build = { version = "1.0.0-beta.2" }
