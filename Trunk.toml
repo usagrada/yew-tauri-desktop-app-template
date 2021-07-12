@@ -9,7 +9,7 @@ release = false
 # The output dir for all final assets.
 dist = "dist"
 # The public URL from which assets are to be served.
-public_url = "/yew-app/"
+# public_url = "/yew-app/"
 
 [watch]
 # Paths to watch, defaults to build target parent folder.
