@@ -26,8 +26,8 @@ $ cargo install wasm-bindgen-cli
 
 ### tauri setup
 
-You need to specify the version for installing tauri-cli now (2021/06/30).
+You need to specify the version for installing tauri-cli now (2021/09/19).
 
 ```bash
-$ cargo install tauri-cli --version 1.0.0-beta.4
+$ cargo install tauri-cli --version 1.0.0-beta.7
 ```
