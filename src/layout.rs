@@ -6,11 +6,10 @@ use header::Header;
 
 
 pub struct Layout {
-	props: LayoutProps,
-	_link: ComponentLink<Self>,
+	// props: LayoutProps,
 }
 
-#[derive(Properties, Clone)]
+#[derive(PartialEq, Properties)]
 pub struct LayoutProps {
 	pub children: Children,
 }
@@ -19,27 +18,20 @@ impl Component for Layout {
 	type Message = ();
 	type Properties = LayoutProps;
 
-	fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-		Self { props, _link }
+	fn create( _ctx: &Context<Self>) -> Self {
+		Self { }
 	}
 
-	fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+	fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
 		false
 	}
 
-	fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-		// Should only return "true" if new properties are different to
-		// previously received properties.
-		// This component has no properties so we will always return "false".
-		false
-	}
-
-	fn view(&self) -> Html {
+	fn view(&self, _ctx: &Context<Self>) -> Html {
 		html! {
 			<>
 				<Header />
 				<main>
-				{ self.props.children.clone() }
+				{ _ctx.props().children.clone() }
 				</main>
 				<Footer />
 			</>
