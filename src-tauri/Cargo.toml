@@ -6,7 +6,7 @@ authors = ["you"]
 license = ""
 repository = ""
 default-run = "app"
-edition = "2018"
+edition = "2021"
 build = "src/build.rs"
 
 [profile.release]
@@ -17,12 +17,12 @@ incremental = false
 opt-level = "s"
 
 [build-dependencies]
-tauri-build = { version = "1.0.0-beta.2" }
+tauri-build = { version = "1.0.0-beta.4" }
 
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.0.0-beta.4", features = ["api-all"] }
+tauri = { version = "1.0.0-beta.8", features = ["api-all"] }
 
 [features]
 default = [ "custom-protocol" ]
