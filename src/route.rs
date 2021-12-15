@@ -6,6 +6,8 @@ use yew_router::prelude::*;
 pub enum MyRoute {
 	#[at("/")]
 	Home,
+	#[at("/about")]
+	About,
 	#[not_found]
 	#[at("/404")]
 	NotFound,
@@ -39,7 +41,10 @@ impl Component for Model {
 fn switch(routes: &MyRoute) -> Html {
 	match routes {
 		MyRoute::Home => {
-			html! {<div>{"home"}</div>}
+			html! {<div>{"Home"}</div>}
+		}
+		MyRoute::About => {
+			html! {<div>{"About"}</div>}
 		}
 		_ => {
 			html! {<div>{"404 Not Found"}</div>}
