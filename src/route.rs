@@ -6,6 +6,8 @@ use yew_router::prelude::*;
 pub enum MyRoute {
 	#[at("/")]
 	Home,
+	#[at("/about")]
+	About,
 	#[not_found]
 	#[at("/404")]
 	NotFound,
@@ -18,7 +20,7 @@ impl Component for Model {
 	type Properties = ();
 
 	fn create(_ctx: &Context<Self>) -> Self {
-		Self {  }
+		Self {}
 	}
 
 	fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
@@ -27,9 +29,11 @@ impl Component for Model {
 
 	fn view(&self, _ctx: &Context<Self>) -> Html {
 		html! {
-			<Layout>
-				<Router<MyRoute> render={Router::render(switch)} />
-			</Layout>
+			<BrowserRouter>
+				<Layout>
+					<Switch<MyRoute> render={Switch::render(switch)} />
+				</Layout>
+			</BrowserRouter>
 		}
 	}
 }
@@ -37,7 +41,10 @@ impl Component for Model {
 fn switch(routes: &MyRoute) -> Html {
 	match routes {
 		MyRoute::Home => {
-			html! {<div>{"home"}</div>}
+			html! {<div>{"Home"}</div>}
+		}
+		MyRoute::About => {
+			html! {<div>{"About"}</div>}
 		}
 		_ => {
 			html! {<div>{"404 Not Found"}</div>}
