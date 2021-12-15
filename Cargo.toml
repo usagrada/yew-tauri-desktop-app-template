@@ -12,5 +12,5 @@ incremental = false
 opt-level = "s"
 
 [dependencies]
-yew = {git = "https://github.com/yewstack/yew", branch = "master"}
-yew-router = { git = "https://github.com/yewstack/yew", branch="master" }
+yew = "^0.19"
+yew-router = "^0.16"
