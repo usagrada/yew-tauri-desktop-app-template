@@ -1,0 +1,42 @@
+[tasks.dev]
+script = [
+'''
+#!/bin/sh
+trunk serve
+'''
+]
+
+[tasks.build]
+script = [
+'''
+#!/bin/sh
+trunk build
+'''
+]
+
+[tasks.gui]
+script = [
+'''
+#!/bin/sh
+cargo tauri dev
+'''
+]
+
+[tasks.gui-build]
+script = [
+'''
+#!/bin/sh
+cargo tauri build
+'''
+]
+
+[tasks.install]
+script = [
+'''
+#!/bin/sh
+echo "Installing..."
+cargo install trunk
+cargo install wasm-bindgen-cli
+cargo install tauri-cli
+'''
+]
