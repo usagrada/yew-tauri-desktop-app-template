@@ -315,6 +315,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
 
 [[package]]
+name = "hermit-abi"
+version = "0.1.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
+dependencies = [
+ "libc",
+]
+
+[[package]]
 name = "implicit-clone"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -349,6 +358,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "libc"
+version = "0.2.137"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fc7fcc620a3bff7cdd7a365be3376c97191aeaccc2a603e600951e452615bf89"
+
+[[package]]
 name = "log"
 version = "0.4.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -362,6 +377,16 @@ name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+[[package]]
+name = "num_cpus"
+version = "1.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f6058e64324c71e02bc2b150e4f3bc8286db6c83092132ffa3f6b1eab0f9def5"
+dependencies = [
+ "hermit-abi",
+ "libc",
+]
 
 [[package]]
 name = "once_cell"
@@ -408,6 +433,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
+name = "pinned"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a829027bd95e54cfe13e3e258a1ae7b645960553fb82b75ff852c29688ee595b"
+dependencies = [
+ "futures",
+ "rustversion",
+ "thiserror",
+]
+
+[[package]]
 name = "prettyplease"
 version = "0.1.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -451,6 +487,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "prokio"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "03b55e106e5791fa5a13abd13c85d6127312e8e09098059ca2bc9b03ca4cf488"
+dependencies = [
+ "futures",
+ "gloo",
+ "num_cpus",
+ "once_cell",
+ "pin-project",
+ "pinned",
+ "tokio",
+ "tokio-stream",
+ "wasm-bindgen-futures",
+]
+
+[[package]]
 name = "quote"
 version = "1.0.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -458,6 +511,12 @@ checksum = "bbe448f377a7d6961e30f5955f9b8d106c3f5e449d493ee1b125c1d43c2b5179"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "rustversion"
+version = "1.0.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97477e48b4cf8603ad5f7aaf897467cf42ab4218a38ef76fb14c2d6773a6d6a8"
 
 [[package]]
 name = "ryu"
@@ -565,6 +624,27 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "tokio"
+version = "1.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d76ce4a75fb488c605c54bf610f221cea8b0dafb53333c1a67e8ee199dcd2ae3"
+dependencies = [
+ "autocfg",
+ "pin-project-lite",
+]
+
+[[package]]
+name = "tokio-stream"
+version = "0.1.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d660770404473ccd7bc9f8b28494a811bc18542b915c0855c51e8f419d5223ce"
+dependencies = [
+ "futures-core",
+ "pin-project-lite",
+ "tokio",
 ]
 
 [[package]]
@@ -691,8 +771,9 @@ dependencies = [
 
 [[package]]
 name = "yew"
-version = "0.19.3"
-source = "git+https://github.com/yewstack/yew.git#8c97bfbb9bf6c776123598e2d56cd46adb808e2f"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5dbecfe44343b70cc2932c3eb445425969ae21754a8ab3a0966981c1cf7af1cc"
 dependencies = [
  "console_error_panic_hook",
  "futures",
@@ -700,11 +781,12 @@ dependencies = [
  "implicit-clone",
  "indexmap",
  "js-sys",
- "once_cell",
- "pin-project",
+ "prokio",
+ "rustversion",
  "serde",
  "slab",
  "thiserror",
+ "tokio",
  "tracing",
  "wasm-bindgen",
  "wasm-bindgen-futures",
@@ -714,8 +796,9 @@ dependencies = [
 
 [[package]]
 name = "yew-macro"
-version = "0.19.3"
-source = "git+https://github.com/yewstack/yew.git#8c97bfbb9bf6c776123598e2d56cd46adb808e2f"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b64c253c1d401f1ea868ca9988db63958cfa15a69f739101f338d6f05eea8301"
 dependencies = [
  "boolinator",
  "once_cell",
